@@ -12,32 +12,59 @@ const app = express();
 app.use(cookieParser());
 app.use(express.json());
 
-// CORS
-app.use(cors({
-  origin: ["http://localhost:3000", "http://localhost:3001"],
-  credentials: true
-}));
+// ---------------------
+// CORS CONFIG (FINAL)
+// ---------------------
 
-// Auth routes (public)
+const allowedOrigins = [
+  "https://zerodha-wuwp.vercel.app",   // FRONTEND (login/signup)
+  "https://zerodha-gold.vercel.app",  // DASHBOARD
+  "http://localhost:3000",            // local frontend
+  "http://localhost:3001"             // local dashboard
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  })
+);
+
+// Allow OPTIONS preflight requests
+app.options("*", cors());
+
+// ---------------------
+// Auth Routes
+// ---------------------
 app.use("/api/auth", authRoute);
 
-// MongoDB connection
+// ---------------------
+// MongoDB Connection
+// ---------------------
 const PORT = process.env.PORT || 3030;
 const uri = process.env.MONGO_URL;
 
-mongoose.connect(uri)
+mongoose
+  .connect(uri)
   .then(() => console.log("Connected to DB"))
   .catch((err) => console.log(err));
 
-// Import models
+// ---------------------
+// Import Models
+// ---------------------
 const { HoldingsModel } = require("./models/HoldingsModel");
 const { PositionsModel } = require("./models/PositionsModel");
 const { OrdersModel } = require("./models/OrdersModel");
 
-
-// -----------------------------------
-// PROTECTED ROUTES (Require Login)
-// -----------------------------------
+// ---------------------
+// Protected Routes
+// ---------------------
 app.get("/allHoldings", requireAuth, async (req, res) => {
   let allHoldings = await HoldingsModel.find({});
   res.json(allHoldings);
@@ -105,18 +132,26 @@ app.post("/newOrder", requireAuth, async (req, res) => {
   }
 });
 
+// Protected test route
 app.get("/protected", requireAuth, (req, res) => {
   res.send("You are allowed!");
 });
 
+// ---------------------
+// Logout Route (FIXED)
+// ---------------------
 app.get("/logout", (req, res) => {
-  res.clearCookie("token"); // remove token cookie
+  res.clearCookie("token", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+  });
   res.json({ message: "Logged out successfully" });
 });
 
-
-
-// Start server
+// ---------------------
+// Start Server
+// ---------------------
 app.listen(PORT, () => {
   console.log("Server running on port", PORT);
 });

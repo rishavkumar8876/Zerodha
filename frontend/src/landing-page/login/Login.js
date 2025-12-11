@@ -31,7 +31,7 @@ const Login = () => {
   e.preventDefault();
   try {
     const { data } = await axios.post(
-      "http://localhost:3030/api/auth/login",
+      "https://zerodha-production-0ddd.up.railway.app/api/auth/login",
       { email, password },
       { withCredentials: true }
     );
@@ -44,7 +44,8 @@ const Login = () => {
 
       // redirect to dashboard
       setTimeout(() => {
-        window.location.href = "http://localhost:3001/"; 
+        window.location.href = "https://zerodha-gold.vercel.app/";
+ 
       }, 1000);
 
       // clear form on success

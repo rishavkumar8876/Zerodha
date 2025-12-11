@@ -9,7 +9,7 @@ const Positions = () => {
 
    useEffect(() => {
     axios
-      .get("http://localhost:3030/allPositions", {
+      .get("https://zerodha-production-0ddd.up.railway.app/allPositions", {
         withCredentials: true,   // 🔥 REQUIRED FOR AUTH
       })
       .then((res) => {

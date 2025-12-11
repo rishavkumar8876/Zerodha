@@ -18,7 +18,6 @@ module.exports.Signup = async (req, res) => {
       return res.json({ message: "User already exists" });
     }
 
-
     const user = await User.create({
       email,
       password,
@@ -26,12 +25,12 @@ module.exports.Signup = async (req, res) => {
       createdAt,
     });
 
-
     const token = createSecretToken(user._id);
 
     res.cookie("token", token, {
-      withCredentials: true,
-      httpOnly: false,
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
     });
 
     return res.status(201).json({
@@ -70,8 +69,9 @@ module.exports.Login = async (req, res) => {
     const token = createSecretToken(user._id);
 
     res.cookie("token", token, {
-      withCredentials: true,
-      httpOnly: false,
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
     });
 
     return res

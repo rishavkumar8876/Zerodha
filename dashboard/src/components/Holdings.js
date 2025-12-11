@@ -11,7 +11,7 @@ const Holdings = () => {
 
    useEffect(() => {
     axios
-      .get("http://localhost:3030/allHoldings", {
+      .get("https://zerodha-production-0ddd.up.railway.app/allHoldings", {
         withCredentials: true,   // 🔥 REQUIRED FOR AUTH
       })
       .then((res) => {

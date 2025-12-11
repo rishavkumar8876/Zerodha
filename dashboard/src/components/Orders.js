@@ -7,7 +7,7 @@ const Orders = () => {
 
    useEffect(() => {
     axios
-      .get("http://localhost:3030/allOrders", {
+      .get("https://zerodha-production-0ddd.up.railway.app/allOrders", {
         withCredentials: true,  // 🔥 REQUIRED FOR AUTH
       })
       .then((res) => {

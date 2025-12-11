@@ -29,8 +29,7 @@ const Menu = () => {
     localStorage.removeItem("username");
 
     // Redirect to login React app (frontend)
-    window.location.href = "http://localhost:3000/"; 
-    // 
+    window.location.href = "https://zerodha-wuwp.vercel.app/";
   };
 
   const menuClass = "menu";
