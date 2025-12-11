@@ -110,5 +110,39 @@ npm start
 nodemon index.js
 ```
 
+## ⚙️ **Setup**
+
+Open in browser:
+
+```bash
+http://localhost:3000
+```
+
+# 🎯 Features
+
+🔐 User Authentication
+🔑 JWT Authorization
+📊 Dashboard UI
+🧾 Orders Page
+📈 Holdings Page
+📱 Responsive Frontend
+🧩 Clean MERN Architecture
+
+---
+
+# 🔗 Demo
+
+### 🔹 Live Demo
+
+```bash
+https://zerodha-wuwp.vercel.app/
+```
+
+# 📜 License
+
+This project is licensed under the MIT License.
+
+
+
 
 
