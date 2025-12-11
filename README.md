@@ -56,76 +56,10 @@ Built using **MongoDB, Express, React, Node.js**.
 
 ---
 
-## 🚀 Getting Started
+🚀 Getting Started
 
-### 1️⃣ Clone the repository  
-```bash
+1️⃣ Clone the repository
 git clone https://github.com/YOUR-USERNAME/zerodha-clone.git
-2️⃣ Install dependencies
-Backend:
 
-bash
-Copy code
-cd backend
-npm install
-Frontend:
+---
 
-bash
-Copy code
-cd frontend
-npm install
-3️⃣ Configure environment variables
-Create .env inside backend:
-
-ini
-Copy code
-PORT=3000
-MONGO_URL=your_mongodb_url
-JWT_SECRET=your_secret
-4️⃣ Run the app
-Frontend:
-
-npm start
-Backend:
-
-nodemon index.js
-⚙️ Setup
-Visit:
-
-http://localhost:3000
-Create an account → Access dashboard → Explore.
-
-🎯 Features
-User Authentication
-
-JWT Authorization
-
-Dashboard UI
-
-Orders Page
-
-Holdings Page
-
-Responsive Frontend
-
-Clean MERN architecture
-
-🔗 Demo
-🔹 Live Demo
-https://zerodha-wuwp.vercel.app/
-
-Demo Credentials:
-User: Demo
-Password: Demo
-
-🙏 Acknowledgments
-Special thanks to:
-
-Zerodha UI inspiration
-
-YouTube / Courses used
-
-Open-source libraries
-
-📜 License
-This project is licensed under the MIT License.
