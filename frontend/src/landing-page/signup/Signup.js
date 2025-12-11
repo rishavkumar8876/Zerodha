@@ -43,7 +43,7 @@ const Signup = () => {
       if (success) {
         handleSuccess(message);
         setTimeout(() => {
-          navigate("/login");
+          window.location.href = "https://zerodha-wuwp.vercel.app/login";
         }, 1000);
       } else {
         handleError(message);

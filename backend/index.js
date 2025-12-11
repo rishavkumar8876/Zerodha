@@ -37,7 +37,8 @@ app.use(
 );
 
 // Allow OPTIONS preflight requests
-app.options("*", cors());
+app.options(/.*/, cors());
+
 
 // ---------------------
 // Auth Routes
