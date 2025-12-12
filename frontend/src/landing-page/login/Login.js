@@ -45,7 +45,6 @@ const Login = () => {
       // redirect to dashboard
       setTimeout(() => {
         window.location.href = "https://zerodha-gold.vercel.app/";
- 
       }, 1000);
 
       // clear form on success
